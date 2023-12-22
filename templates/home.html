@@ -1,0 +1,18 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="{{ url_for('static', filename='background.mp4') }}" type="video/mp4">
+        </video>
+        <div class="center-button">
+            <h1 class="big-bold-title">Welcome to SSS Clinic</h1>
+            <p>
+                Welcome to SSS Clinic, your premier destination for compassionate and cutting-edge healthcare. Our dedicated team prioritizes your well-being, offering personalized services in a state-of-the-art facility. Trust us to redefine your healthcare experience</p>
+            <a class="oval-button" href="{{ url_for('book_appointment') }}">Book Appointment Now</a>
+        </div>
+    </div>
+{% endblock %}

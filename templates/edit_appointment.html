@@ -1,0 +1,17 @@
+<!-- templates/edit_appointment.html -->
+{% extends 'base.html' %}
+
+{% block title %}Edit Appointment{% endblock %}
+
+{% block content %}
+    <h1>Edit Appointment</h1>
+    <form method="POST" action="{{ url_for('edit_appointment', index=index) }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" value="{{ appointment.name }}" required>
+        <label for="date">Date:</label>
+        <input type="date" name="date" value="{{ appointment.date }}" required>
+        <label for="time">Time:</label>
+        <input type="time" name="time" value="{{ appointment.time }}" required>
+        <button type="submit">Save</button>
+    </form>
+{% endblock %}

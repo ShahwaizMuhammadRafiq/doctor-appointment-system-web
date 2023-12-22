@@ -1,0 +1,30 @@
+<!-- templates/appointment.html -->
+{% extends 'base.html' %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+    <h1>Appointments</h1>
+    <ul>
+        {% for appointment in appointments %}
+            <li>
+                {{ appointment.name }} - {{ appointment.date }} - {{ appointment.time }}
+                {% set index = loop.index0 %}
+                {% if index < appointments|length %}
+                    <a href="{{ url_for('edit_appointment', index=index) }}">Edit</a>
+                    <a href="{{ url_for('remove_appointment', index=index) }}">Remove</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+
+    <form method="POST" action="{{ url_for('book_appointment') }}">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required>
+        <label for="date">Date:</label>
+        <input type="date" name="date" required>
+        <label for="time">Time:</label>
+        <input type="time" name="time" required>
+        <button type="submit">Book Appointment</button>
+    </form>
+{% endblock %}
